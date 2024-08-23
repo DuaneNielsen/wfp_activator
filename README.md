@@ -8,7 +8,7 @@ Developed on python 3.8, so make sure you have 3.8+installed
 
 Clone the repo
 
-Install the requirments .txt
+Install the requirements.txt
 
 ```
 pip install -r requirements.txt
