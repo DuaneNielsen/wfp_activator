@@ -1,1 +1,1 @@
-pip install ruamel.yaml
+ruamel.yaml
