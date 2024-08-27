@@ -1,5 +1,6 @@
 import argparse
 from ruamel.yaml import YAML
+from ruamel.yaml.scalarstring import DoubleQuotedScalarString
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
@@ -24,7 +25,7 @@ def main():
 
     # preserve YAML file properties
     yaml = YAML()
-    # yaml.preserve_quotes = True
+    yaml.preserve_quotes = True
     yaml.indent(mapping=2, sequence=4, offset=2)
 
     combined_data = []
@@ -52,7 +53,7 @@ def main():
         for tag in args.prepend_tags:
             if tag in description['sampleTags']:
                 tag_to_prepend.append(description['sampleTags'][tag])
-                description['metric']['resource'].insert(0, f"${{tag:{tag}}}")
+                description['metric']['resource'].insert(0, DoubleQuotedScalarString(f"${{tag:{tag}}}"))
 
         prepend_tags_str = '|'.join(tag_to_prepend)
 
